@@ -1,4 +1,4 @@
-export default class HomehometaskSwitch {
+export default class HometaskSwitch {
   static addEventListeners() {
     const tasks = document.getElementsByClassName('hometask');
     for (const task of tasks) {

@@ -72,10 +72,15 @@ export default class TaskManager {
 
     document.addEventListener('keydown', (e) => {
       if ((e.code === 'Enter' || e.code === 'NumpadEnter') && input === document.activeElement) {
-        if (input.value) {
-          this.pushNewTask(input.value);
-        } else {
+        if (!input.value) {
           this.showError();
+          return;
+        }
+
+        if (this.data.findIndex((elem) => elem.name === input.value) !== -1) {
+          console.log('This task already exists'); // попапы кончились, перезвоните через неделю
+        } else {
+          this.pushNewTask(input.value);
         }
       }
     });
