@@ -5,30 +5,54 @@ export default class GalleryForm {
     this.submit = null;
   }
 
-  addEventListeners() {
-    const form = document.getElementById('form');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const urlInput = document.getElementById('url-input');
-      this.validateImage(urlInput.value);
-    });
-  }
-
-  validateImage(url) {
+  validateImage(url, title) {
     const img = document.createElement('img');
-    img.onload = (e) => {
-      ImageGallery.insertImage(img);
-      console.log(e);
+    img.onload = () => {
+      ImageGallery.insertImage(img, title);
+      this.clearForm();
+    };
+    img.onerror = () => {
+      this.showError('url');
     };
 
-    // img.onerror = (e) => {
-    //   console.log(e)
-    // }
-    try {
-      img.src = url;
-    } catch (e) {
-      console.log(1);
+    img.src = url;
+  }
+
+  showError(name) {
+    // а вот здесь уже лень делать полноценные попапы...
+    switch (name) {
+      case 'title':
+        console.log('No title!');
+        break;
+      case 'url':
+        console.log('Wrong url!');
     }
-    // console.log(img.width);
+  }
+
+  clearForm() {
+    const form = document.getElementById('form');
+    form.reset();
+  }
+
+  addEventListeners() {
+    const form = document.getElementById('form');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const titleInput = document.getElementById('title-input');
+      const urlInput = document.getElementById('url-input');
+      if (!titleInput.value) {
+        this.showError('title');
+        return;
+      }
+      this.validateImage(urlInput.value, titleInput.value);
+    });
+
+    document.addEventListener('click', (e) => {
+      const { target } = e;
+      if (target.closest('.delete-image')) {
+        target.closest('.image-wrapper').remove();
+      }
+    });
   }
 }

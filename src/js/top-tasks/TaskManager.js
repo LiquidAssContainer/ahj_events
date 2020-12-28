@@ -54,6 +54,16 @@ export default class TaskManager {
     this.renderTaskList();
   }
 
+  showError() {
+    const errorPopup = document.getElementById('error-popup');
+    errorPopup.classList.remove('hidden');
+
+    clearTimeout(this.errorTimeout);
+    this.errorTimeout = setTimeout(() => {
+      errorPopup.classList.add('hidden');
+    }, 1000);
+  }
+
   addEventListeners() {
     const input = document.getElementsByClassName('tasks-input')[0];
     input.addEventListener('input', (e) => {
@@ -62,7 +72,11 @@ export default class TaskManager {
 
     document.addEventListener('keydown', (e) => {
       if ((e.code === 'Enter' || e.code === 'NumpadEnter') && input === document.activeElement) {
-        this.pushNewTask(input.value);
+        if (input.value) {
+          this.pushNewTask(input.value);
+        } else {
+          this.showError();
+        }
       }
     });
 
