@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Events Homework</title>
+</head>
+
+<body>
+  <section class="hometask-switch">
+    <ul class="hometask-list">
+      <li class="hometask-item"><a href="" class="hometask" data-section="goblin-game">Goblin Game</a></li>
+      <li class="hometask-item"><a href="" class="hometask" data-section="top-tasks">TOP Tasks</a></li>
+      <li class="hometask-item"><a href="" class="hometask hometask_active" data-section="image-gallery">Image
+          Gallery</a></li>
+    </ul>
+  </section>
+
+  <section class="goblin-game hidden" data-section="goblin-game">
+    <div class="field"></div>
+    <div class="counters">
+      <div class="counter">Убито: <span id="kill-counter">0</span></div>
+      <div class="counter">Пропущено: <span id="lose-counter">0</span></div>
+    </div>
+    <div class="buttons">
+      <button class="button" id="start">Начать</button>
+      <button class="button" id="reset">Сбросить</button>
+    </div>
+  </section>
+
+  <section class="top-tasks hidden" data-section="top-tasks">
+    <h2 class="tasks-header">TOP Tasks</h2>
+    <input class="tasks-input" type="text" placeholder="Write task name">
+
+    <article class="task-list-block">
+      <h3 class="task-list-header">Pinned:</h3>
+      <ul class='task-list' id="pinned-tasks"></ul>
+      <div class='hidden' id='no-pinned'>No pinned tasks</div>
+    </article>
+
+    <article class="task-list-block">
+      <h3 class="task-list-header">All tasks:</h3>
+      <ul class='task-list' id="all-tasks"></ul>
+      <div class='hidden' id='no-tasks'>No tasks</div>
+    </article>
+  </section>
+
+  <section class="gallery-section" data-section="image-gallery">
+    <form id="form">
+      <div class="form-inputs">
+        <label class="form-label">
+          <span class='label-text'>Название</span>
+          <input class="form-input" type="text">
+        </label>
+
+        <label class="form-label">
+          <span class='label-text'>Ссылка на изображение</span>
+          <input class="form-input" id='url-input' type="url">
+        </label>
+      </div>
+
+      <button id="form-submit">Добавить</button>
+    </form>
+
+    <div class="image-gallery"></div>
+  </section>
+</body>
+
+</html>

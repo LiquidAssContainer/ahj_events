@@ -1,0 +1,36 @@
+#form {
+  display: flex;
+  flex-direction: column;
+	border: 2px solid black;
+	width: 480px;
+	height: 320px;
+  margin: 0 auto;
+  padding: 20px 10px;
+}
+
+.form-inputs {
+	margin-top: 10px;
+}
+
+.form-label {
+	display: block;
+}
+
+#form-submit {
+	display: block;
+	width: 200px;
+	height: 40px;
+	background-color: #eee;
+	border: 2px solid #ddd;
+
+	font-size: 15px;
+	cursor: pointer;
+}
+
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 960px;
+  margin: 0 auto;
+}

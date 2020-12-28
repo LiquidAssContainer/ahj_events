@@ -1,0 +1,27 @@
+@import "goblin-game.css";
+@import "top-tasks.css";
+@import "image-gallery.css";
+@import "task-switch.css";
+
+* {
+	padding: 0;
+	margin: 0;
+	word-break: break-word;
+}
+
+body,
+html {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+input, button {
+  outline: none;
+}
+
+.hidden {
+	display: none;
+}
